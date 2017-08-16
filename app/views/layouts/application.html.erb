@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyProfile</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="header">
+	<div id="logo">
+		<h1><a href="#">My Profile<sup></sup></a></h1>
+		<h2>Designed by Me</h2>
+	</div>
+	<div id="menu">
+		<ul>
+			<% if session[:user] %>	
+			<li class="active"><a href="/dashboard/index">Dashboard</a></li>
+			<li class="active"><a href="/dashboard/edit_profile">Edit Profile</a></li>
+
+			<li><a href="/account/reset_password">Reset Password</a></li>			
+			<li><a href="/account/logout">Logout</a></li>
+			<% else %>
+			<li><a href="/account/signup">Signup</a></li>
+
+			<li><a href="/account/forget_password">Forget Password</a></li>
+
+			<li><a href="/account/login">Login</a></li>
+			<% end %>								    
+		</ul>
+	</div>
+</div>
+<!-- end header -->
+
+<!-- start page -->
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+	<%= yield%>
+	</div>
+	<!-- end content -->
+	<!-- start sidebar -->
+	<div id="sidebar">
+	</div>
+	<!-- end sidebar -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+</body>
+</html>
